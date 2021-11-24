@@ -1,0 +1,115 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.add-book {
+  margin: 10px;
+}
+
+.modal {
+  /* makes the modal fixed to the screen */
+  position: fixed;
+  /* position it in the center */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: black solid 1px;
+  z-index: 10;
+  background-color: white;
+  width: 250px;
+  max-width: 50%;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modalheader {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: black solid 1px;
+  background-color: #272424;
+  color: whitesmoke;
+}
+
+.modalheader .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.modalheader .close-button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.modalbody {
+  padding: 30px;
+  background-color: rgb(204, 56, 45);
+}
+
+input[type="text"],
+input[type="number"] {
+  background-color: #272424;
+  color: whitesmoke;
+}
+
+.modalbody .submit-button {
+  cursor: pointer;
+}
+
+.modalsubmit {
+  display: flex;
+  background-color: #272424;
+  justify-content: center;
+  padding: 10px;
+}
+
+.modalsubmit .submit-button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.book {
+  height: 200px;
+  width: 200px;
+  /* background-color: red; */
+  border: black solid 2px;
+  margin: 10px;
+}
+
+.bookshowcase {
+  display: flex;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}

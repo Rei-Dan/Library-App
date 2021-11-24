@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button data-modal-target="#modal" class="add-book">Add New Book</button>
+    <div class="modal" id="modal">
+      <div class="modalheader">
+        <div class="title">New Book</div>
+        <button data-modal-close class="close-button">&times</button>
+      </div>
+      <div class="modalbody">
+        <form id="new-book">
+          <div>
+            <label for="title">Title</label>
+            <input name="title" id="title" type="text" required />
+          </div>
+          <div>
+            <label for="author">Author:</label>
+            <input name="author" id="author" type="text" required />
+          </div>
+          <div>
+            <label for="pages">Pages:</label>
+            <input type="number" name="pages" id="pages" min="1" required />
+          </div>
+          <div class="radio">
+            <div>
+              <label name="read">Read:</label>
+              <input type="radio" name="read" id="read" value="Read" />
+            </div>
+            <div>
+              <label name="Notread">Not Read:</label>
+              <input type="radio" name="read" id="notread" value="Not Read" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modalsubmit">
+        <button form="new-book" class="submit-button" type="button">Add</button>
+      </div>
+    </div>
+
+    <div class="bookshowcase"></div>
+    <div id="overlay"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
