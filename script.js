@@ -1,23 +1,26 @@
+// ##Book Constructor
 function book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
 }
-
+// ##Added a function to the prototype to share between all books
 book.prototype.info = function () {
-  return `${title} by ${author}, ${pages} pages, ${read}`;
+  console.log(
+    `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
+  );
 };
 
 let myLibrary = [
-  {
-    title: "best book in the world part 2",
-    author: "Jiminy Cricket",
-    pages: "69",
-    read: "Read",
-  },
+  // {
+  //   title: "best book in the world part 2",
+  //   author: "Jiminy Cricket",
+  //   pages: "69",
+  //   read: "Read",
+  // },
 ];
-
+let deletebuttons = document.querySelectorAll(".delete-button");
 function addBookToLibrary() {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
@@ -27,10 +30,36 @@ function addBookToLibrary() {
   addbook();
 }
 
+function deletebook() {
+  const booktarget = deletebutton.closest(".book");
+}
+
+function addDeletefunction() {
+  deletebuttons = document.querySelectorAll(".delete-button");
+  deletebuttons.forEach((deletebutton) => {
+    deletebutton.addEventListener("click", () => {
+      const booktarget = deletebutton.closest("[data-book-number]");
+      console.log(booktarget.dataset.bookNumber);
+      myLibrary.splice(booktarget.dataset.bookNumber - 1, 1);
+      bookshowcase.removeChild(booktarget);
+    });
+  });
+}
+
+// function reorderBooks() {
+//   const books = document.querySelectorAll(".book");
+//   books.forEach((book) => {
+//     if (book.dataset.bookNumber > booktarget.dataset.bookNumber) {
+//       book.dataset.bookNumber -= 1;
+//     }
+//   });
+// }
+
 const bookshowcase = document.querySelector(".bookshowcase");
 
 function addbook() {
   const book = document.createElement("div");
+  // book.id = `${myLibrary.length}`;
   bookshowcase.appendChild(book);
   book.classList.add("book");
   book.dataset.bookNumber = myLibrary.length;
@@ -39,7 +68,7 @@ function addbook() {
   bookheader.classList.add("bookheader");
   const deletebutton = document.createElement("button");
   deletebutton.innerHTML = "&times";
-  deletebutton.classList.add("deletebutton");
+  deletebutton.classList.add("delete-button");
   bookheader.appendChild(deletebutton);
   const name = document.createElement("div");
   book.appendChild(name);
@@ -54,9 +83,9 @@ function addbook() {
   author.textContent = myLibrary[myLibrary.length - 1].author;
   pages.textContent = `${myLibrary[myLibrary.length - 1].pages} pages`;
   read.textContent = `Read: ${myLibrary[myLibrary.length - 1].read}`;
+  addDeletefunction();
 }
-
-const deletebuttons = document.querySelectorAll("button.deletebutton");
+// addbook();
 
 const submit = document.querySelector(".submit-button");
 submit.addEventListener("click", addBookToLibrary);
@@ -105,5 +134,3 @@ overlay.addEventListener("click", () => {
     closeModal(modal);
   });
 });
-
-addbook();
