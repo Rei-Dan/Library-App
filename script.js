@@ -9,50 +9,57 @@ book.prototype.info = function () {
   return `${title} by ${author}, ${pages} pages, ${read}`;
 };
 
-let myLibrary = [];
-
-// addBookToLibrary(
-//   "best book in the world part 2",
-//   "Nick van Ekeren",
-//   "69",
-//   "Yes"
-// );
-
-// addBookToLibrary("best book in the world", "Nick van Ekeren", "69", "Yes");
+let myLibrary = [
+  {
+    title: "best book in the world part 2",
+    author: "Jiminy Cricket",
+    pages: "69",
+    read: "Read",
+  },
+];
 
 function addBookToLibrary() {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
-  let read = document.querySelector("input[name='read']").value;
+  let read = document.querySelector("input[name='read']:checked").value;
   myLibrary.push(new book(title, author, pages, read));
-  loop();
+  addbook();
 }
 
 const bookshowcase = document.querySelector(".bookshowcase");
 
-function loop() {
-  for (let i = 0; i < myLibrary.length; i++) {
-    const book = document.createElement("div");
-    bookshowcase.appendChild(book);
-    book.classList.add("book");
-    const name = document.createElement("div");
-    book.appendChild(name);
-    const author = document.createElement("div");
-    book.appendChild(author);
-    const pages = document.createElement("div");
-    book.appendChild(pages);
-    const read = document.createElement("div");
-    book.appendChild(read);
-    name.textContent = myLibrary[i].title;
-    author.textContent = myLibrary[i].author;
-    pages.textContent = `${myLibrary[i].pages} pages`;
-    read.textContent = `Read: ${myLibrary[i].read}`;
-  }
+function addbook() {
+  const book = document.createElement("div");
+  bookshowcase.appendChild(book);
+  book.classList.add("book");
+  book.dataset.bookNumber = myLibrary.length;
+  const bookheader = document.createElement("div");
+  book.appendChild(bookheader);
+  bookheader.classList.add("bookheader");
+  const deletebutton = document.createElement("button");
+  deletebutton.innerHTML = "&times";
+  deletebutton.classList.add("deletebutton");
+  bookheader.appendChild(deletebutton);
+  const name = document.createElement("div");
+  book.appendChild(name);
+  name.classList.add("name");
+  const author = document.createElement("div");
+  book.appendChild(author);
+  const pages = document.createElement("div");
+  book.appendChild(pages);
+  const read = document.createElement("div");
+  book.appendChild(read);
+  name.textContent = myLibrary[myLibrary.length - 1].title;
+  author.textContent = myLibrary[myLibrary.length - 1].author;
+  pages.textContent = `${myLibrary[myLibrary.length - 1].pages} pages`;
+  read.textContent = `Read: ${myLibrary[myLibrary.length - 1].read}`;
 }
+
+const deletebuttons = document.querySelectorAll("button.deletebutton");
+
 const submit = document.querySelector(".submit-button");
 submit.addEventListener("click", addBookToLibrary);
-// submit.onclick = addBookToLibrary();
 
 // ## MODAL OPEN AND CLOSING WITH OVERLAY ##
 
@@ -98,3 +105,5 @@ overlay.addEventListener("click", () => {
     closeModal(modal);
   });
 });
+
+addbook();

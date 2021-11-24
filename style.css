@@ -86,7 +86,7 @@ input[type="number"] {
 }
 
 .book {
-  height: 200px;
+  height: 100px;
   width: 200px;
   /* background-color: red; */
   border: black solid 2px;
@@ -95,6 +95,7 @@ input[type="number"] {
 
 .bookshowcase {
   display: flex;
+  flex-wrap: wrap;
 }
 
 #overlay {
@@ -112,4 +113,8 @@ input[type="number"] {
 #overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.name {
+  background-color: red;
 }
