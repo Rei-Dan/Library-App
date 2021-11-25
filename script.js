@@ -5,22 +5,26 @@ function book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
 }
-// ##Added a function to the prototype to share between all books
+// ##Added a function to the prototype to share between all objects created from the books constructor
 book.prototype.info = function () {
   console.log(
     `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
   );
 };
 
-let myLibrary = [
-  // {
-  //   title: "best book in the world part 2",
-  //   author: "Jiminy Cricket",
-  //   pages: "69",
-  //   read: "Read",
-  // },
-];
+// ##Declare empty library
+let myLibrary = [];
+// {
+//   title: "best book in the world part 2",
+//   author: "Jiminy Cricket",
+//   pages: "69",
+//   read: "Read",
+// },
+// ##Select all buttons on the pages that have the class of .delete-button
 let deletebuttons = document.querySelectorAll(".delete-button");
+
+// function to grab all the values from the input fields, pushes these as
+// an object to the myLibrary Array and invokes the addbook() function
 function addBookToLibrary() {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
@@ -30,30 +34,33 @@ function addBookToLibrary() {
   addbook();
 }
 
-function deletebook() {
-  const booktarget = deletebutton.closest(".book");
-}
+// function deletebook() {
+//   const booktarget = deletebutton.closest(".book");
+// }
 
 function addDeletefunction() {
   deletebuttons = document.querySelectorAll(".delete-button");
   deletebuttons.forEach((deletebutton) => {
     deletebutton.addEventListener("click", () => {
-      const booktarget = deletebutton.closest("[data-book-number]");
-      console.log(booktarget.dataset.bookNumber);
+      const booktarget = deletebutton.parentNode.parentNode;
+      // const booktarget = deletebutton.closest("[data-book-number]");
+      // console.log(booktarget);
+      // console.log(booktarget.dataset.bookNumber);
       myLibrary.splice(booktarget.dataset.bookNumber - 1, 1);
       bookshowcase.removeChild(booktarget);
+      reorderBooks(booktarget.dataset.bookNumber);
     });
   });
 }
 
-// function reorderBooks() {
-//   const books = document.querySelectorAll(".book");
-//   books.forEach((book) => {
-//     if (book.dataset.bookNumber > booktarget.dataset.bookNumber) {
-//       book.dataset.bookNumber -= 1;
-//     }
-//   });
-// }
+function reorderBooks(booktarget) {
+  const books = bookshowcase.querySelectorAll(".book");
+  books.forEach((book) => {
+    if (book.dataset.bookNumber > booktarget) {
+      book.dataset.bookNumber -= 1;
+    }
+  });
+}
 
 const bookshowcase = document.querySelector(".bookshowcase");
 
