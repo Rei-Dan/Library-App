@@ -8,7 +8,19 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <button data-modal-target="#modal" class="add-book">Add New Book</button>
+    <div class="container">
+      <div class="header">
+        <div class="title">My Odin Project Library</div>
+        <button data-modal-target="#modal" class="add-book">+</button>
+       </div>
+        <div class="bookshowcase"></div>
+        <div class="footer">
+        Made by Rei-Dan
+        <br />
+        The Odin Project
+        </div>
+      </div>
+    </div>
     <div class="modal" id="modal">
       <div class="modalheader">
         <div class="title">New Book</div>
@@ -52,7 +64,6 @@
       </div>
     </div>
 
-    <div class="bookshowcase"></div>
     <div id="overlay"></div>
     <script src="script.js"></script>
   </body>

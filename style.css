@@ -1,9 +1,55 @@
 body {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+  height: 100vh;
+  font-family: "Courier New", Courier, monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.header {
+  background-color: rgb(204, 56, 45);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.header .add-book {
+  cursor: pointer;
+  outline: none;
+  height: 65px;
+  width: 65px;
+  border: solid;
+  background: none;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.bookshowcase {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 0 auto;
+  background-color: #272424;
+}
+
+.footer {
+  background-color: rgb(204, 56, 45);
+  height: 5%;
+  text-align: center;
+}
 .add-book {
   margin: 10px;
 }
@@ -21,7 +67,6 @@ body {
   background-color: white;
   width: 250px;
   max-width: 50%;
-  font-family: "Courier New", Courier, monospace;
 }
 
 .modal.active {
@@ -86,16 +131,47 @@ input[type="number"] {
 }
 
 .book {
-  height: 100px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   /* background-color: red; */
   border: black solid 2px;
   margin: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.bookshowcase {
+.book .name {
+  font-weight: bold;
+}
+
+.bookheader {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.bookheader .delete-button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.readdiv {
+  background-color: rgb(204, 56, 45);
+  padding: 5px 0px;
+}
+
+.toggle-read {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  font-weight: bold;
+  color: whitesmoke;
 }
 
 #overlay {
@@ -115,6 +191,6 @@ input[type="number"] {
   pointer-events: all;
 }
 
-.name {
-  background-color: red;
-}
+/* .name {
+  /* background-color: red; */
+/* } 
