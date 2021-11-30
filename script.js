@@ -1,24 +1,24 @@
 // ##Book Constructor
-function book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
-// ##Added a function to the prototype to share between all objects created from the books constructor
-book.prototype.info = function () {
-  console.log(
-    `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
-  );
-};
-
-book.prototype.readstatus = function () {
-  if (this.read === "Read") {
-    this.read = "Not Read";
-  } else {
-    this.read = "Read";
+class book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
-};
+  info() {
+    console.log(
+      `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
+    );
+  }
+  readStatus() {
+    if (this.read === "Read") {
+      this.read = "Not Read";
+    } else {
+      this.read = "Read";
+    }
+  }
+}
 
 const bookshowcase = document.querySelector(".bookshowcase");
 let deletebuttons = document.querySelectorAll(".delete-button");
@@ -105,7 +105,7 @@ function addbook() {
   const readbutton = document.createElement("button");
   readdiv.appendChild(readbutton);
   readbutton.addEventListener("click", () => {
-    myLibrary[book.dataset.bookNumber - 1].readstatus();
+    myLibrary[book.dataset.bookNumber - 1].readStatus();
     read.textContent = `Status: ${myLibrary[book.dataset.bookNumber - 1].read}`;
   });
   readbutton.innerHTML = "Change Read Status";
